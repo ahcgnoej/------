@@ -1,1 +1,1 @@
-console.log('반복문')
+console.log('복문')
