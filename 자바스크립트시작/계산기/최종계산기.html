@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        * {box-sizing: border-box;}
+        #result {width:180px; height:50px; margin:5px; text-align: right;}
+        #operator {width:50px; height:50px; margin:5px; text-align:center}
+        button {width: 50px; height:50px; margin:5px;}
+    </style>
+</head>
+<body>
+    <input readonly id="operator">
+    <input readonly id="result" type="number">
+    <div>
+    <button id="num7">7</button>
+    <button id="num8">8</button>
+    <button id="num9">9</button>
+    <button id="plus">+</button>
+    </div>
+    <div>
+    <button id="num4">4</button>
+    <button id="num5">5</button>
+    <button id="num6">6</button>
+    <button id="minus">-</button>
+    </div>
+    <div>
+    <button id="num1">1</button>
+    <button id="num2">2</button>
+    <button id="num3">3</button>
+    <button id="divide">/</button>
+    </div>
+    <div>
+    <button id="clear">c</button>
+    <button id="num0">0</button>
+    <button id="calculate">=</button>
+    <button id="multiply">x</button>
+
+    </div>
+
+    <script>
+
+        let operator=''
+        let one=''
+        let two=''
+
+        const $operator=document.querySelector('#operator');
+        const $result=document.querySelector('#result');
+
+        const onClickButton=(number)=>{
+            return()=> {
+                if(operator){
+                    two+=number
+                }else{
+                    one+=number
+                }
+            $result.value+=number
+            }
+        }
+        document.querySelector('#num0').addEventListener('click',onClickButton('0'))
+        document.querySelector('#num1').addEventListener('click',onClickButton('1'))
+        document.querySelector('#num2').addEventListener('click',onClickButton('2'))
+        document.querySelector('#num3').addEventListener('click',onClickButton('3'))
+        document.querySelector('#num4').addEventListener('click',onClickButton('4'))
+        document.querySelector('#num5').addEventListener('click',onClickButton('5'))
+        document.querySelector('#num6').addEventListener('click',onClickButton('6'))
+        document.querySelector('#num7').addEventListener('click',onClickButton('7'))
+        document.querySelector('#num8').addEventListener('click',onClickButton('8'))
+        document.querySelector('#num9').addEventListener('click',onClickButton('9'))
+        document.querySelector('#plus').addEventListener('click',()=>{})
+        document.querySelector('#clear').addEventListener('click',()=>{})
+        document.querySelector('#minus').addEventListener('click',()=>{})
+        document.querySelector('#divide').addEventListener('click',()=>{})
+        document.querySelector('#multiple').addEventListener('click',()=>{})
+    
+    </script>
+</body>
+</html>
