@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 선택하기</title>
+</head>
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+	<div>제시어 : <span id="word"></span></div>
+	<input type="text">
+	<button class="btn1">입력</button>
+    <button class="btn2">버튼1</button>
+    <button class="btn3 btn1">버튼2</button>
+    <script>
+        /*
+        document.querySelector('선택자')
+        선택자는 HTML 태그를 선택할 수 있게 도와주는 문자열. 
+        만약 동일한 선택자가 여러 개 있으면 맨 처음 선택자가 선택된다. 
+        */
+        const $input = document.querySelector('input')
+        console.log($input)
+        const $button=document.querySelector('button')
+        console.log($button)
+
+        const a= document.querySelector('#order') //('span#order')는 span안에 있는 order말하는 거.
+        const b= document.querySelector('.btn1') //얘도 마찬가지로 'button.btn1' 가능
+        const c= document.querySelectorAll('button.btn1')
+        console.log(a,b,c)
+
+        /*
+        document.querySelector('선택자 내부선택자 내부선택자 ...')
+        선택자 사이의 공백으로 구분한다. 
+        */
+        const d= document.querySelectorAll('div span')
+        console.log(d)
+
+        /*
+        document.querySelectorAll() 
+        태그를 모두 선택하고 싶을 때 사용
+        */
+        const $$button=document.querySelectorAll('button')
+        console.log($$button)
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>끝말잇기</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<div><span id="order">1</span>번째 참가자</div>
+	<div>제시어 : <span id="word"></span></div>
+	<input type="text">
+	<button>입력</button>
+	<script>
+
+		const number= parseInt(prompt('몇 명이 참가하나요?')) //와 이거 Number이 아니고 Int인줄;; 그리고 parseInt도 가능
+		console.log('number',number) //('number'+number)도 가능한데 +할 거면 띄어쓰기 잘 고려하기. ','는 알아서 띄어쓰기 해 줌
+		console.log(typeof(number))
+
+		const $button = document.querySelector('button')
+		const $input = document.querySelector('input')
+		const $order = document.querySelector('#order')
+		const $word = document.querySelector('#word')
+
+		//input에 글이 있고 입력버튼이 눌리면 다음참가자
+		//[숫자]번째참가자가 바뀜
+		//제시어 옆에 이전 참가자가 입력했던 문자가 들어가야 함
+		//input에 있던 글이 사라져야함.
+
+		let word;
+		let newWord;
+		const onClickButton =()=>{
+			if(!word){
+				word=newWord;
+				$word.textContent=word;
+				$input.value='';
+				const order = Number($order.textContent);
+				if(order+1>number){
+					$order.textContent=1;
+				}else{
+					$order.textContent=order+1;
+				}
+			}else{
+				if(word[word.length-1]===newWord[0]){
+					word=newWord;
+					$word.textContent=word;
+					$input.value='';
+					const order = Number($order.textContent);
+					if(order+1>number){
+						$order.textContent=1;
+					}else{
+						$order.textContent=order+1;
+					}
+				}else{
+					alert('올바르지 않은 단어입니다')
+				}
+			}
+		}
+		
+		const inputNewWord=(e)=>{
+			newWord=e.target.value;
+		}
+		
+		$button.addEventListener('click',onClickButton)
+		$input.addEventListener('input',inputNewWord)
+
+
+	</script>
+</body>
+</html>

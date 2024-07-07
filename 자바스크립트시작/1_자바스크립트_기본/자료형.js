@@ -14,7 +14,8 @@ console.log(first||'익명')
 
 let str='123'
 console.log(typeof(Number(str)))
-//number
-//String,Number
+//Number or PraseInt
+//String
+//Float
 
 //1)숫자0 2)빈문자열 3)null 4)undefined 5)NaN 6)false ->모두 false
