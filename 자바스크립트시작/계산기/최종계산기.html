@@ -69,11 +69,22 @@
         document.querySelector('#num7').addEventListener('click',onClickButton('7'))
         document.querySelector('#num8').addEventListener('click',onClickButton('8'))
         document.querySelector('#num9').addEventListener('click',onClickButton('9'))
-        document.querySelector('#plus').addEventListener('click',()=>{})
-        document.querySelector('#clear').addEventListener('click',()=>{})
-        document.querySelector('#minus').addEventListener('click',()=>{})
-        document.querySelector('#divide').addEventListener('click',()=>{})
-        document.querySelector('#multiple').addEventListener('click',()=>{})
+
+        const onClickOp=(op)=>{
+            return()=>{
+                if (one){
+                    operator=op;
+                    $operator.value=op;
+                }else{
+                    alert('숫자를 먼저 입력하세요.');
+                }
+            }
+        }        
+        document.querySelector('#plus').addEventListener('click',onClickOp('+'))
+        document.querySelector('#clear').addEventListener('click',onClickOp('c'))
+        document.querySelector('#minus').addEventListener('click',onClickOp('-'))
+        document.querySelector('#divide').addEventListener('click',onClickOp('/'))
+        document.querySelector('#multiple').addEventListener('click',onClickOp('x'))
     
     </script>
 </body>
