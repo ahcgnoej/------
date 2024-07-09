@@ -45,6 +45,7 @@
         let operator=''
         let one=''
         let two=''
+        let result=''
 
         const $operator=document.querySelector('#operator');
         const $result=document.querySelector('#result');
@@ -52,11 +53,15 @@
         const onClickButton=(number)=>{
             return()=> {
                 if(operator){
+                    if(!two){
+                        $result.value='';
+                    }
                     two+=number
+                    $result.value+=number
                 }else{
                     one+=number
+                    $result.value+=number
                 }
-            $result.value+=number
             }
         }
         document.querySelector('#num0').addEventListener('click',onClickButton('0'))
@@ -72,19 +77,54 @@
 
         const onClickOp=(op)=>{
             return()=>{
-                if (one){
-                    operator=op;
-                    $operator.value=op;
-                }else{
-                    alert('숫자를 먼저 입력하세요.');
+                if (!one){
+                    alert('숫자를 먼저 입력하세요')
+                }
+                switch(op){
+                    case '=':
+                        switch(operator){
+                            case '+':
+                                result=Number(one)+Number(two)
+                                break;
+                            case '-':
+                                result=Number(one)-Number(two)
+                                break;
+                            case '/':
+                                result=Number(one)/Number(two)
+                                break;
+                            case 'x':
+                                result=Number(one)*Number(two)
+                                break;
+                            }
+                        console.log('= :',result)
+                        $result.value=result
+                        $operator.value=''
+                        one=result;
+                        two=''
+                        console.log(one,two);
+                        break;
+                    case 'c':
+                        operator = '';
+                        one = '';
+                        two = '';
+                        $operator.value=''
+                        $result.value=''
+                        console.log('c')
+                        break;
+                    default :                
+                        operator=op;
+                        $operator.value=op;
+                        break;
+                    }
                 }
             }
-        }        
         document.querySelector('#plus').addEventListener('click',onClickOp('+'))
         document.querySelector('#clear').addEventListener('click',onClickOp('c'))
         document.querySelector('#minus').addEventListener('click',onClickOp('-'))
         document.querySelector('#divide').addEventListener('click',onClickOp('/'))
-        document.querySelector('#multiple').addEventListener('click',onClickOp('x'))
+        document.querySelector('#multiply').addEventListener('click',onClickOp('x'))
+        document.querySelector('#calculate').addEventListener('click',onClickOp('='))
+
     
     </script>
 </body>
