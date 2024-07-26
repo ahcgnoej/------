@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+</head>
+<body>
+    <form id="form">
+        <!-- html 웹 표준? 보통 input같은 버튼이 있으면 form으로 감싸줘야 한다. 
+         form쓰면 데이터를 전달해주는 거 때문에 화면이 새로고침된다.
+         그렇게 되면 저장한 4개의 숫자가 날라간다.(새로고침 하면서 날라감)-->
+        <input type="text" id="input"> 
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+    <script>
+        const $input= document.querySelector('#input')
+        const $form=document.querySelector('#form')
+        const $logs=document.querySelector('#logs')
+
+        $form.addEventListener('submit',()=>{
+
+        })
+                
+        const numbers=[]
+        for (let a=0; a<9; a++){
+            numbers.push(a+1)
+        }console.log(numbers)
+
+        const answer=[]
+        for (let a=0; a<4; a++){
+            const index=Math.floor(Math.random()*(numbers.length-a))
+            answer.push(numbers[index]);
+            numbers.splice(index,1)
+        }
+
+    </script>
+</body>
+</html>
