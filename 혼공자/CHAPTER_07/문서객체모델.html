@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+<!-- //DOMContentLoaded -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const hello = document.querySelector('h1') //꼭 따옴표 감싸주기
+      hello.textContent='안녕하세요'
+      hello.style.color = 'white'
+      hello.style.backgroundColor = 'black'
+      hello.style.padding='10px'
+    })
+  </script>
+
+  <!-- //button  -->
+  <script>
+    const hi=()=> { 
+      const hello = document.querySelector('button') //꼭 따옴표 감싸주기 
+      hello.textContent='안녕하세요'
+      hello.style.color = 'white'
+      hello.style.backgroundColor = 'black'
+      hello.style.padding='10px'
+  }
+  </script>
+
+  <!-- //글자 조작하기 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { //이부분에 DOMContentLoaded 없으니까 div 안 보임  왜냐면 script가 body에 있는 div보다 위에 있어서 그럼. 
+    const a = document.querySelector('#a')
+    const b = document.querySelector('#b')
+    a.textContent = '<h1>textContent 속성</h1>'
+    b.innerHTML = '<h1>innerHTML 속성</h1>'
+    })
+  </script>
+
+  <!-- setAttribute로 속성 조작 -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const rects = document.querySelectorAll('.rect');
+      rects.forEach((rect,index)=>{
+        const width = (index+1)*100;
+        const src= `https://img.freepik.com/free-photo/cute-ai-generated-cartoon-bunny_23-2150288875.jpg?size=${width}&ext
+        `
+        rect.setAttribute('src',src)
+      })
+    })
+  </script>
+
+  <!-- 문서객체 조작하기 -->
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const header = document.createElement('h1');
+      header.textContent= '문서 객체 동적으로 생성'
+      header.setAttribute('data-custom','사용자 정의 속성')
+      header.style.color = 'yellow';
+      document.body.appendChild(header) //h1태그를 body 태그 아래에 추가하기 
+
+    })
+  </script>
+
+  <!-- 문서 객체 제거하기 -->
+   <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      setTimeout(()=>{
+        const h = document.getElementById('timeout')
+        document.body.removeChild(h)
+      },3000)
+    })
+   </script>
+
+    <!-- 클릭 이벤트 설정하기 -->
+    <script>
+      document.addEventListener('DOMContentLoaded',()=>{
+        const click = document.getElementById('click');
+        let counter = 0; 
+        click.addEventListener('click',(event)=>{
+          counter++;
+          click.textContent=`클릭 횟수 : ${counter}`
+        })
+      })
+    </script>
+
+</head>
+<body>
+  <h1>HELLO</h1>
+
+  <button  onclick="hi()">hello</button>
+
+  <div id="a"></div>
+  <div id="b"></div>
+
+  <img class = 'rect'><img>
+  <img class = 'rect'><img>
+  <img class = 'rect'><img>
+  <img class = 'rect'><img>
+
+  <h1 id="timeout">3초 후 사라집니다</h1>
+
+  <button id="click">클릭횟수 : 0</button>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ console.log(isLeapYear(2020))
 //최솟값 구하기 
 function min(array) {
   let num=array[0];
-  for(let i=1; i<=array.length; i++){
+  for(let i=1; i<=array.length; i++){    //또는 for i of array
     if(num>array[i]){
       num=array[i]
     }
@@ -24,6 +24,7 @@ function sample(...item){
 sample(1,2)
 sample(1,2,3,4)
 sample(1,2,3,4,5)
+
 
 //나머지 매개변수를 사용한 최소값 구하기 
 function min(...items) {
