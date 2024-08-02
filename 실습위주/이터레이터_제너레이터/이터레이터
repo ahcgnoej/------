@@ -1,0 +1,14 @@
+이터레이터(반복기)
+-> 데이터 구조를 순회할 수 있는 방법을 제공하고, 필요한 만큼 데이터를 처리할 수 있게 해준다
+-> 시퀀스를 정의하고 종료시의 반환값을 잠재적으로 정의하는 객체이다.
+-> 이터레이터를 리턴하는 [Symbol.iterator]()메서드를 가진 객체 
+-> {value:값, done : true/false} 형태의 이터레이터 객체를 리턴하는 next() 메서드를 가진 객체. next 메서드로 순환할 수 있는 객체. value에는 꺼낸 값이 저장되고 done에는 반복이 끝났는지를 뜻하는 논리값.
+-> 반복자(이터레이터)두 개의 속성(value,done)을 반환하는 next() 메소드를 사용하여 iterator protocol을 구현한다. 시퀀스의 마지막 값이 이미 산출되었다면 done 값은 true가 된다. 만약 value값이 done과 함께 존재한다면, 그것은 반복자의 반환값이 된다. 
+
+const arr = [1,2,3]
+const iter = arr[Symbol.iterator]();
+console.log(iter.next())
+console.log(iter.next())
+console.log(iter.next())
+console.log(iter.next())
+/*key값을 문자열이 아닌 변수로 주기 위해 arr[변수] 형태를 가진다. 위 사진에서 보듯이, Symbol.iterator라는 key값을 가지고 value는 함수이다. 이를 접근해서 함수실행() 시키면 이터레이터 객체가 반환되어 iter에 담기게 된다*/
